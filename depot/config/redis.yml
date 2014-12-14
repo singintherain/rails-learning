@@ -1,0 +1,10 @@
+default:
+  development: redis://127.0.0.1:6379/0
+  production: redis://127.0.0.1:6379/0
+  test: redis://127.0.0.1:6379/0
+
+sidekiq:
+  development: redis://127.0.0.1:6379
+  production: redis://127.0.0.1:6379
+  test: redis://127.0.0.1:6379
+

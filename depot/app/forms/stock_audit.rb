@@ -1,6 +1,6 @@
 class StockAudit
   include ActiveModel::Validations
-  include ActiveModel::AttributeMethods
+  #include ActiveModel::AttributeMethods
 
   attr_accessor :rate, :amount, :market
 
@@ -10,18 +10,18 @@ class StockAudit
     @market_grade = options[:market] || 0
   end
 
-  attribute_method_suffix '?'
-  attribute_method_preffix 'reset_'
+  #attribute_method_suffix '?'
+  #attribute_method_preffix 'reset_'
 
-  define_attribute_methods [:rate]
+  #define_attribute_methods [:rate]
 
-  def attribute?(attribute)
-    send(attribute).present?
-  end
+  #def attribute?(attribute)
+    #send(attribute).present?
+  #end
 
-  def reset_attibute?(attribute)
-    send("#{attribute}=", 0)
-  end
+  #def reset_attibute?(attribute)
+    #send("#{attribute}=", 0)
+  #end
 
   validate :check
 
@@ -40,7 +40,7 @@ class StockAudit
     end
   end
 
-  def amount_enough
+  def amount_enough?
     unless amount > 100
       errors.add(:amount, 'is so small!')
       false
@@ -49,7 +49,7 @@ class StockAudit
     end
   end
 
-  def market_good
+  def market_good?
     unless market_grade > 30
       errors.add(:market_grade, 'is not very well')
       false

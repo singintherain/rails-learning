@@ -53,6 +53,7 @@ GEM
       railties (>= 3.0.0)
     ffaker (1.21.0)
     hike (1.2.3)
+    hiredis (0.5.2)
     i18n (0.6.9)
     jbuilder (2.0.7)
       activesupport (>= 3.0.0, < 5)
@@ -171,6 +172,7 @@ DEPENDENCIES
   debugger (~> 1.6.2)
   factory_girl_rails (= 4.2.1)
   ffaker (~> 1.21.0)
+  hiredis
   jbuilder (~> 2.0.1)
   kaminari (~> 0.15.0)
   machinist (~> 2.0)

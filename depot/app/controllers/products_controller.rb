@@ -26,6 +26,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    Redis.current.rpush(RedisKeys[:product_new], @product.to_json)
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -42,6 +44,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        Redis.current.lpush(RedisKeys[:product_new], @product.to_json)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
